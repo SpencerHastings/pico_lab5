@@ -31,7 +31,7 @@ angular.module('picoTemp', [])
         $scope.updateTemperatures();
         $scope.updateViolations();
 
-        $scope.currentTemperature = $scope.temperatures[0];
+        $scope.currentTemperature = $scope.temperatures[$scope.temperatures.length - 1];
     }
 
     $scope.updateAll();

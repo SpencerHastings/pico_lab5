@@ -1,12 +1,33 @@
-<html>
+<html ng-app="picoTemp">
 
 <head>
     <title>Pico Website</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="temp.js"></script>
 </head>
 
 <body>
 
-    Hello Pico.
+    Hello Pico. <a href="profile.html">Profile</a>
+
+    <div ng-controller="TemperatureController as tempC">
+        <div>Current Temperature:{{currentTemperature.temperature}}</div>
+        <div>Last 10 Temperatures: 
+            <ul>
+                <li ng-repeat="temp in temperatures">
+                    <span>Temperature: {{temp.temperature}} - Time: {{temp.timestamp}}</span>
+                </li>
+            </ul>
+        </div>
+        <div>Last 10 Violations: 
+            <ul>
+                <li ng-repeat="temp in violations">
+                    <span>Temperature: {{temp.temperature}} - Time: {{temp.timestamp}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 </body>
 

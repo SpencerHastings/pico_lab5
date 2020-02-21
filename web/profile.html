@@ -4,9 +4,80 @@
     <title>Pico Profile</title>
 </head>
 
-<body>
+<script>
+    function getData() {
+        getDataThreshold();
+        getDataPhoneNumber();
+    }
 
-    Profile here.
+
+    function getDataThreshold() {
+        const Http = new XMLHttpRequest();
+        var url = 'http://localhost:8080/sky/cloud/PwPiYzCHNFdAEDM5R4rmJ4/sensor_profile/get_threshold'
+        
+        Http.open("GET", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            document.getElementById("threshold").value = Http.responseText.replace(/['"]+/g, '');
+
+        }
+
+        
+        return false;
+    }
+
+    function getDataPhoneNumber() {
+        const Http = new XMLHttpRequest();
+        var url = 'http://localhost:8080/sky/cloud/PwPiYzCHNFdAEDM5R4rmJ4/sensor_profile/get_phone_number'
+        
+        Http.open("GET", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            document.getElementById("phone_number").value = Http.responseText.replace(/['"]+/g, '');
+        }
+
+        
+        return false;
+    }
+
+
+    function updateProfile() {
+
+        var threshold = document.getElementById("threshold").value;
+        var phone_number = document.getElementById("phone_number").value;
+
+        const Http = new XMLHttpRequest();
+        var url = 'http://localhost:8080/sky/event/PwPiYzCHNFdAEDM5R4rmJ4/1337/sensor/profile_updated'
+        url += '?threshold=' + threshold;
+        url += '&phone_number=' + phone_number;
+        
+        Http.open("GET", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            console.log(Http.responseText)
+            alert('Profile updated!');
+        }
+
+        
+        return false;
+    }
+</script>
+
+<body onload="getData()">
+
+    <a href="index.html">Go Back.</a>
+    <div>
+        <form onsubmit="return updateProfile();">
+            <label for="threshold">Threshold:</label>
+            <input type="text" id="threshold" name="threshold"><br><br>
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number"><br><br>
+            <input type="submit" value="Update Profile">
+        </form>
+    </div>
 
 </body>
 

@@ -11,7 +11,7 @@ ruleset sensor_profile {
         }
 
         get_phone_number = function() {
-            ent:phone_number
+            ent:phone_number.substr(2)
         }
     }
 

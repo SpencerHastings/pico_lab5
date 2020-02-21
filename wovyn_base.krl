@@ -47,8 +47,8 @@ ruleset wovyn_base {
                 event:attr("timestamp") + 
                 "."
         }
-        // twilio:send_sms(profile:get_phone_number(),
-        //               "+12029911769",
-        //               message)
+        twilio:send_sms(profile:get_full_phone_number(),
+                       "+12029911769",
+                       message)
     }
 }

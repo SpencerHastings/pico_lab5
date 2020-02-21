@@ -1,8 +1,8 @@
 ruleset sensor_profile {
 
     meta {
-        provides get_threshold, get_phone_number
-        shares get_threshold, get_phone_number
+        provides get_threshold, get_phone_number, get_full_phone_number
+        shares get_threshold, get_phone_number, get_full_phone_number
     }
 
     global {
@@ -11,6 +11,10 @@ ruleset sensor_profile {
         }
 
         get_phone_number = function() {
+            ent:phone_number.substr(2)
+        }
+
+        get_full_phone_number = function() {
             ent:phone_number.substr(2)
         }
     }

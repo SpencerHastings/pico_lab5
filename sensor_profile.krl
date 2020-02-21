@@ -28,7 +28,7 @@ ruleset sensor_profile {
 
         always {
             ent:threshold := as(event:attr("threshold"))
-            ent:phone_number := as(event:attr("phone_number"))
+            ent:phone_number := "+1" + event:attr("phone_number")
         }
 
     }

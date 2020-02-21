@@ -19,6 +19,7 @@ ruleset sensor_profile {
         select when wrangler ruleset_added where event:attr("rids") >< meta:rid
         always {
             ent:threshold := 80.0
+            ent:phone_number := "+18013100486"
         }
     }
 
